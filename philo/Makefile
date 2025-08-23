@@ -6,7 +6,7 @@
 #    By: lenakach <lenakach@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/17 13:04:31 by lenakach          #+#    #+#              #
-#    Updated: 2025/08/22 16:33:11 by lenakach         ###   ########.fr        #
+#    Updated: 2025/08/24 00:52:17 by lenakach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,12 @@ FLAGS = -Wall -Wextra -Werror -g3
 #Dossiers
 SRC_DIR = src
 #SRC_BONUS_DIR = bonus
-LIBFT_DIR = libft
 #GNL_DIR = libft/get_next_line
 
 #Includes
-INCLUDES = -Iincludes -I$(LIBFT_DIR)/includes
+INCLUDES = -Iincludes
 
 #Bibliotheques
-LIBFT = $(LIBFT_DIR)/libft.a
 
 #Sources
 SRC = $(SRC_DIR)/philo.c $(SRC_DIR)/utils.c
@@ -49,14 +47,11 @@ OBJS = $(SRCS:.c=.o)
 RM = rm -f
 
 #Regles
-all: $(LIBFT) $(NAME)
+all: $(NAME)
 
-$(LIBFT):
-	@echo "Compilation de LIbft..."
-	@make -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.c
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
@@ -68,7 +63,6 @@ $(NAME): $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
-	make clean -C $(LIBFT_DIR)
 
 #clean:
 #	$(RM) $(OBJS) $(OBJS_BONUS)
@@ -76,7 +70,6 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	make fclean -C $(LIBFT_DIR)
 
 #fclean: clean
 #	$(RM) $(NAME) $(NAME_BONUS)

@@ -6,7 +6,7 @@
 /*   By: lenakach <lenakach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 16:10:16 by lenakach          #+#    #+#             */
-/*   Updated: 2025/08/23 22:41:15 by lenakach         ###   ########.fr       */
+/*   Updated: 2025/08/24 00:51:15 by lenakach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "../libft/libft.h"
 #include <limits.h>
 #include <sys/time.h>
 

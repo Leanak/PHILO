@@ -6,7 +6,7 @@
 /*   By: lenakach <lenakach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 16:27:26 by lenakach          #+#    #+#             */
-/*   Updated: 2025/08/23 22:41:59 by lenakach         ###   ########.fr       */
+/*   Updated: 2025/08/24 14:57:05 by lenakach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ bool	init_general(t_general *general, char **av, int ac)
 	// Max_meal different de 0 = ok;
 	general->error = 0;
 	general->dead = 0;
+	general->all_full = 0;
 	general->start_time = get_time();
+	pthread_mutex_init(&general->safe_full, NULL);	
 	pthread_mutex_init(&general->safe_dead, NULL);
 	pthread_mutex_init(&general->safe_print, NULL);
 	general->philo->check_fork = false;

@@ -6,7 +6,7 @@
 /*   By: lenakach <lenakach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 16:10:16 by lenakach          #+#    #+#             */
-/*   Updated: 2025/08/24 00:51:15 by lenakach         ###   ########.fr       */
+/*   Updated: 2025/08/24 19:07:40 by lenakach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_philo
 	pthread_mutex_t	happy_meal; 
 	bool			check_fork;
 	bool			full;
+	long			last_meal;
 	int				nb_meals;
 	int				philo_ID;
 	struct s_general	*general;	
@@ -47,9 +48,12 @@ typedef struct	s_general
 	int	number_of_philo;
 	int	max_meal;
 	int	dead;
+	int	all_full;
 	long	start_time;
 	t_philo	philo[200];
+	pthread_t	monitor;
 	pthread_mutex_t	safe_dead;
+	pthread_mutex_t	safe_full;
 	pthread_mutex_t	fork[200];
 	pthread_mutex_t	safe_print;
 }	t_general;

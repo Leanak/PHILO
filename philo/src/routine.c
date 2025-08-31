@@ -6,7 +6,7 @@
 /*   By: lenakach <lenakach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 12:52:08 by lenakach          #+#    #+#             */
-/*   Updated: 2025/08/31 20:48:18 by lenakach         ###   ########.fr       */
+/*   Updated: 2025/08/31 21:18:38 by lenakach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,23 @@ int	think(t_general *general, t_philo *philo)
 	return (0);
 }
 
+void	wait_all_full(t_general *general)
+{
+	int	current_full;
+
+	while (1)
+	{
+		pthread_mutex_lock(&general->safe_full);
+		current_full = general->all_full;
+		pthread_mutex_unlock(&general->safe_full);
+		if (current_full == general->number_of_philo)
+			break ;
+		if (!check_if_dead(general))
+			break ;
+		usleep(500);
+	}
+}
+
 int	eating(t_philo *philo, t_general *general)
 {
 	fork_and_print(philo, general);
@@ -43,9 +60,7 @@ int	eating(t_philo *philo, t_general *general)
 		pthread_mutex_unlock(&philo->safe_meal);
 		pthread_mutex_unlock(philo->fork_l);
 		pthread_mutex_unlock(philo->fork_r);
-		while (general->all_full != general->number_of_philo)
-			if (!check_if_dead(general))
-				break ;
+		wait_all_full(general);
 		return (1);
 	}
 	pthread_mutex_unlock(&philo->safe_meal);

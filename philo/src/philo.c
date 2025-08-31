@@ -6,7 +6,7 @@
 /*   By: lenakach <lenakach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 11:44:47 by lenakach          #+#    #+#             */
-/*   Updated: 2025/08/31 18:14:42 by lenakach         ###   ########.fr       */
+/*   Updated: 2025/08/31 19:38:25 by lenakach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,13 @@ int	main(int ac, char **av)
 
 	i = -1;
 	if (!(ac >= 5 && ac <= 6))
+	{
+		printf("Wrong number of args\n");
 		return (1);
+	}
 	if (!init_general(&general, ac, av) || general.error == -1)
 	{
-		printf("Parsing not goof\n");
+		printf("Arguments not valid\n");
 		return (1);
 	}
 	while (++i < general.number_of_philo)

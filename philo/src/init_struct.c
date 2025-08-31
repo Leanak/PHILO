@@ -6,7 +6,7 @@
 /*   By: lenakach <lenakach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 11:48:50 by lenakach          #+#    #+#             */
-/*   Updated: 2025/08/31 18:14:10 by lenakach         ###   ########.fr       */
+/*   Updated: 2025/08/31 19:38:57 by lenakach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ long	ft_atol(char *str, int *error)
 bool	init_general(t_general *general, int ac, char **av)
 {
 	int	i;
+
 	general->error = 0;
 	general->dead = 0;
 	general->all_full = 0;

@@ -6,7 +6,7 @@
 /*   By: lenakach <lenakach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 14:13:42 by lenakach          #+#    #+#             */
-/*   Updated: 2025/08/31 18:14:22 by lenakach         ###   ########.fr       */
+/*   Updated: 2025/08/31 19:22:04 by lenakach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	*routine_monitor(void *arg)
 		while (i < general->number_of_philo)
 		{
 			check_philo(&general->philo[i], general);
+			if (!check_if_dead(general))
+				return (NULL);
 			i++;
 		}
 		if (check_full(general))

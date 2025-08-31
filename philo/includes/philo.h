@@ -6,7 +6,7 @@
 /*   By: lenakach <lenakach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 11:44:32 by lenakach          #+#    #+#             */
-/*   Updated: 2025/08/31 18:06:55 by lenakach         ###   ########.fr       */
+/*   Updated: 2025/08/31 19:38:31 by lenakach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ typedef struct s_general
 	int					dead;
 	int					all_full;
 	long				start_time;
-	int					start;
 	t_philo				philo[200];
-	pthread_mutex_t		safe_start;
 	pthread_t			monitor;
 	pthread_mutex_t		safe_dead;
 	pthread_mutex_t		safe_full;

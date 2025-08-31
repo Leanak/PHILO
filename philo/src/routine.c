@@ -6,7 +6,7 @@
 /*   By: lenakach <lenakach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 12:52:08 by lenakach          #+#    #+#             */
-/*   Updated: 2025/08/31 19:33:39 by lenakach         ###   ########.fr       */
+/*   Updated: 2025/08/31 19:56:54 by lenakach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,6 @@ int	think(t_general *general, t_philo *philo)
 		return (time_to_think - 100);
 	return (0);
 }
-
-/* int        think(t_general *general, t_philo *philo)
-{
-        int        time_to_think;
-        int        temp;
-
-        time_to_think = (general->time_to_eat);
-        pthread_mutex_lock(&philo->safe_meal);
-        temp = ((get_time() - philo->last_meal) + general->time_to_eat);
-        pthread_mutex_unlock(&philo->safe_meal);
-        if (temp >= time_to_think)
-                time_to_think = 0;
-        else
-        {
-                time_to_think -= temp;
-                time_to_think /= 2;
-                if (time_to_think > 500)
-                        time_to_think = 150;
-        }
-        return (time_to_think);
-} */
 
 void	eating(t_philo *philo, t_general *general)
 {

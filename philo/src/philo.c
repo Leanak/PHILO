@@ -6,11 +6,28 @@
 /*   By: lenakach <lenakach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 11:44:47 by lenakach          #+#    #+#             */
-/*   Updated: 2025/08/31 19:38:25 by lenakach         ###   ########.fr       */
+/*   Updated: 2025/08/31 20:01:21 by lenakach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+void	destroy_mutexes(t_general *general)
+{
+	int	i;
+
+	i = 0;
+	while (i < general->number_of_philo)
+	{
+		pthread_mutex_destroy(general->philo[i].fork_l);
+		pthread_mutex_destroy(general->philo[i].fork_r);
+		pthread_mutex_destroy(&general->philo[i].safe_meal);
+		pthread_mutex_destroy(&general->fork[i++]);
+	}
+	pthread_mutex_destroy(&general->safe_full);
+	pthread_mutex_destroy(&general->safe_dead);
+	pthread_mutex_destroy(&general->safe_print);
+}
 
 void	*start_philo(t_general *general, int i)
 {
@@ -48,5 +65,6 @@ int	main(int ac, char **av)
 	while (++i < general.number_of_philo)
 		pthread_join(general.philo[i].philo_thread, NULL);
 	pthread_join(general.monitor, NULL);
+	destroy_mutexes(&general);
 	return (0);
 }
